@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Since 2018, Lebanon's external debt fell 16%. Its income fell 60%.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>html,body{margin:0;height:100%;overflow:hidden;background:#fff;font-family:'Open Sans',Arial,sans-serif;color:#222}#c{width:100%;height:100vh}</style>
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
+</head><body><div id="c"></div>
+<script>
+(function () {
+  var traces = [
+    {x: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022], y: [44.01, 46.14, 47.82, 49.66, 55.72, 62.1, 64.45, 68.22, 69.51, 74.17, 79.65, 73.89, 68.87, 66.9, 67.11], mode: 'lines', line: {color: '#333333', width: 3.5},
+      hovertemplate: 'External debt: $%{y:.1f}bn<extra></extra>'},
+    {x: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021], y: [29.55, 35.17, 37.94, 39.69, 43.81, 46.66, 47.52, 49.42, 50.33, 52.82, 53.79, 50.36, 30.7, 21.63], mode: 'lines', line: {color: '#b03a2e', width: 4.0},
+      hovertemplate: 'Income (GNI): $%{y:.1f}bn<extra></extra>'},
+    {x: [2018, 2022], y: [79.65, 67.11], mode: 'markers', marker: {color: '#333333', size: 9.0}, hoverinfo: 'skip'},
+    {x: [2018, 2021], y: [53.79, 21.63], mode: 'markers', marker: {color: '#b03a2e', size: 9.0}, hoverinfo: 'skip'}
+  ];
+  var n = function (x, y, t, c, o) { return Object.assign({x: x, y: y, text: t, showarrow: false, font: {size: 13, color: c}}, o || {}); };
+  var layout = {
+    margin: {l: 36, r: 12, t: 26, b: 28}, showlegend: false, hovermode: 'x unified',
+    paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)', font: {family: 'inherit'},
+    xaxis: {range: [2007.4, 2022.9], tickvals: [2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022], showgrid: false, zeroline: false, showline: true, linecolor: '#bfbfbf', ticks: '', tickfont: {size: 12, color: '#8c8c8c'}, fixedrange: true},
+    yaxis: {range: [0, 90], tickvals: [0, 20, 40, 60, 80], showgrid: false, zeroline: false,
+             tickfont: {size: 12, color: '#8c8c8c'}, fixedrange: true},
+    shapes: [{type: 'rect', xref: 'x', yref: 'paper', x0: 2018, x1: 2022.9, y0: 0, y1: 1, fillcolor: '#eeeeee', line: {width: 0}, layer: 'below'}],
+    annotations: [
+      n(2014.3, 77, '<b>External debt</b>', '#333333'),
+      n(2013.8, 39, '<b>Income (GNI)</b>', '#b03a2e'),
+      n(2018, 79.65, '$80bn', '#333333', {yshift: 14}),
+      n(2022, 67.11, '$67bn', '#333333', {yshift: -17, xanchor: 'right'}),
+      n(2018, 53.79, '$54bn', '#b03a2e', {yshift: 14, xanchor: 'right'}),
+      n(2021, 21.63, '$22bn', '#b03a2e', {yshift: -15}),
+      {xref: 'paper', yref: 'paper', x: 0, y: 1, xanchor: 'left', yanchor: 'bottom', xshift: -34, yshift: 6,
+        showarrow: false, text: 'US$ billions', font: {size: 11, color: '#8c8c8c'}}
+    ]
+  };
+  Plotly.newPlot('c', traces, layout, {responsive: true, displayModeBar: false});
+})();
+</script>
+</body></html>

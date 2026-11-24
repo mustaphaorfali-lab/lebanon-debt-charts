@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>In 2021, banks owed depositors almost five times what Lebanon earned</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>html,body{margin:0;height:100%;overflow:hidden;background:#fff;font-family:'Open Sans',Arial,sans-serif;color:#222}#c{width:100%;height:100vh}</style>
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
+</head><body><div id="c"></div>
+<script>
+(function () {
+  var v = [102.82, 66.9, 21.63], c = ["#333333", "#bdbdbd", "#b03a2e"], tc = ["#333333", "#767676", "#b03a2e"], nm = ["Dollar deposits owed by banks", "External debt", "Income (GNI)"], ys = [2, 1, 0];
+  var traces = [{type: 'bar', orientation: 'h', x: v, y: ys, width: 0.6, marker: {color: c},
+                  customdata: nm, hovertemplate: '%{customdata}: $%{x:.1f}bn<extra></extra>'}];
+  var ann = [];
+  for (var i = 0; i < v.length; i++) {
+    ann.push({x: 0, y: ys[i] + 0.31, xanchor: 'left', yanchor: 'bottom', showarrow: false, text: '<b>' + nm[i] + '</b>',
+              font: {size: 13, color: tc[i]}});
+    ann.push({x: v[i], y: ys[i], xanchor: 'left', xshift: 6, showarrow: false, text: '$' + Math.round(v[i]) + 'bn',
+              font: {size: 13, color: tc[i]}});
+  }
+  var layout = {
+    margin: {l: 4, r: 12, t: 4, b: 4}, showlegend: false, hovermode: 'closest', bargap: 0.5,
+    paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)', font: {family: 'inherit'},
+    xaxis: {range: [0, 125], visible: false, fixedrange: true},
+    yaxis: {range: [-0.36, 2.72], visible: false, fixedrange: true},
+    annotations: ann
+  };
+  Plotly.newPlot('c', traces, layout, {responsive: true, displayModeBar: false});
+})();
+</script>
+</body></html>

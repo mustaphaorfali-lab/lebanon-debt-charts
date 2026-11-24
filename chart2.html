@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measured against income, the debt more than doubled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>html,body{margin:0;height:100%;overflow:hidden;background:#fff;font-family:'Open Sans',Arial,sans-serif;color:#222}#c{width:100%;height:100vh}</style>
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
+</head><body><div id="c"></div>
+<script>
+(function () {
+  var traces = [
+    {x: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018], y: [148.9, 131.2, 126.1, 125.1, 127.2, 133.1, 135.6, 138.0, 138.1, 140.4, 148.1], mode: 'lines', line: {color: '#333333', width: 3.5},
+      hovertemplate: 'External debt: %{y:.0f}% of GNI<extra></extra>'},
+    {x: [2018, 2019, 2020, 2021], y: [148.1, 146.7, 224.4, 309.4], mode: 'lines', line: {color: '#333333', width: 5.5},
+      hovertemplate: 'External debt: %{y:.0f}% of GNI<extra></extra>'},
+    {x: [2018, 2021], y: [148.1, 309.4], mode: 'markers', marker: {color: '#333333', size: 10.0}, hoverinfo: 'skip'}
+  ];
+  var layout = {
+    margin: {l: 42, r: 12, t: 26, b: 28}, showlegend: false, hovermode: 'x unified',
+    paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)', font: {family: 'inherit'},
+    xaxis: {range: [2007.4, 2022.9], tickvals: [2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022], showgrid: false, zeroline: false, showline: true, linecolor: '#bfbfbf', ticks: '', tickfont: {size: 12, color: '#8c8c8c'}, fixedrange: true},
+    yaxis: {range: [0, 345], tickvals: [0, 100, 200, 300], ticksuffix: '%', showgrid: false, zeroline: false,
+             tickfont: {size: 12, color: '#8c8c8c'}, fixedrange: true},
+    shapes: [
+      {type: 'rect', xref: 'x', yref: 'paper', x0: 2018, x1: 2022.9, y0: 0, y1: 1, fillcolor: '#eeeeee', line: {width: 0}, layer: 'below'},
+      {type: 'line', xref: 'paper', yref: 'y', x0: 0, x1: 1, y0: 100, y1: 100, line: {color: '#bfbfbf', width: 1, dash: 'dot'}}
+    ],
+    annotations: [
+      {x: 2009, y: 100, xanchor: 'left', yshift: -10, showarrow: false, text: 'debt = one year of income', font: {size: 11, color: '#8c8c8c'}},
+      {x: 2018, y: 148.1, text: '<b>148%</b>', showarrow: false, xanchor: 'right', xshift: -6, yshift: 10, font: {size: 13, color: '#333333'}},
+      {x: 2021, y: 309.4, text: '<b>309%</b>', showarrow: false, xanchor: 'right', xshift: -8, font: {size: 15, color: '#333333'}},
+      {xref: 'paper', yref: 'paper', x: 0, y: 1, xanchor: 'left', yanchor: 'bottom', xshift: -40, yshift: 6,
+        showarrow: false, text: '% of GNI', font: {size: 11, color: '#8c8c8c'}}
+    ]
+  };
+  Plotly.newPlot('c', traces, layout, {responsive: true, displayModeBar: false});
+})();
+</script>
+</body></html>
